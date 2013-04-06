@@ -11,10 +11,30 @@
          
   <body>
 
+<!--
     <div id="popover">
       <h1 id="location"></h1>
       Chief Executive Salary: £<span id="chief_salary"></span>
     </div>
+-->
+    <div id="popover">
+      <h1 id="location"></h1>
+      <div class="box">
+      <img class="profile_image" src="RichCEO.png">
+      <div class="name">Council Chief</div>
+      <div class="ceo_salary">£<span id="ceo_salary_text"></span></div>
+      <div class="ceo_delta"><span id="ceo_delta_text">%</div>
+    </div>
+
+      <div class="box">
+      <img class="profile_image" src="PoorCEO.png">
+      <div class="name">Worker</div>
+      <div class="worker_salary">£<span id="worker_salary_text"></span></div>
+      <div class="worker_delta"><span id="worker_delta_text">%</span></div>
+    </div>
+    </div>
+
+    <img src="Logo.jpg" class="logo"/>
 
 <svg
    xmlns:svg="http://www.w3.org/2000/svg"
@@ -692,9 +712,14 @@
   </g>
 </svg>
 
+<div class="creators">
+  Created by <a href="http://twitter.com/benmmurphy">@benmmurphy</a> <a href="http://twitter.com/kirstystyles">@KirstyStyles</a> <a href="http://twitter.com/ElinaHedman">@ElinaHedman</a>
 <div class="attribution">
 Original Local Government Map By Nilfanion [<a href="http://creativecommons.org/licenses/by-sa/3.0">CC-BY-SA-3.0</a> or <a href="http://www.gnu.org/copyleft/fdl.html">GFDL</a>], <a href="http://commons.wikimedia.org/wiki/File%3AEnglish_administrative_divisions_2010.svg">via Wikimedia Commons</a>
 </div>
 
+<div class="attribution">
+  Data from <a href="http://www.taxpayersalliance.com/">Tax Payers Alliance</a>
+</div>
 </body>
 </html>

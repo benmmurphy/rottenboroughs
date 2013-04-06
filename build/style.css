@@ -7,8 +7,31 @@
 	opacity: 0.8;
 	padding: 10px;
 	display: none;
+	-webkit-box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    1px 1px 5px rgba(50, 50, 50, 0.75);
+	box-shadow:         1px 1px 5px rgba(50, 50, 50, 0.75);
 }
 
+.logo {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.ceo_salary, .worker_salary {
+	color: red;
+}
+
+.profile_image {
+	height: 50px;
+	float: left;
+	padding-right: 10px;
+}
+
+.box {
+	display: inline-block;
+	width: 140px;
+}
 #location {
 	font-size: 20px;
 	margin: 0px;
@@ -23,4 +46,14 @@
 
 .attribution {
 	text-align: center;
+}
+
+.creators {
+	text-align: center;
+
+}
+
+.title {
+	text-align: center;
+	text-transform: uppercase;
 }

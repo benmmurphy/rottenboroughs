@@ -18,7 +18,7 @@
 
      $(function() {
       make_heat_map();
-      
+
       for (var i = 0; i < counties.length; ++i) {
         var svg = $(document.getElementById(counties[i]));
 
@@ -32,7 +32,7 @@
             popover.css("top", e.pageY);
             $("#location").text(this.id);
             var data = window.council_data[this.id];
-            $("#chief_salary").text(format( "#,##0.", data.chief_executive_salary));
+            $("#ceo_salary_text").text(format( "#,##0.", data.chief_executive_salary));
             popover.css("display", "block");
 
           }
