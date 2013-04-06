@@ -26,13 +26,14 @@ def lerp(color_start, color_end, min, max, value)
 end
 
 counties = File.read("counties.txt").split("\n")
-rich = CSV.parse(File.read("RICH2.csv"))
+rich = CSV.parse(File.read("RICH2.csv").force_encoding("iso-8859-1"))
 
 chief_map = {}
 rich.each do |line|
+  #puts line.inspect
   council = line[0]
-  salary = line[2].gsub(",", "").to_i
-  change = line[3].gsub("%", "").to_f
+  salary = line[4].gsub(",", "").to_i
+  change = line[5].gsub("%", "").to_f
   if salary == 0
     next
   end
