@@ -1,0 +1,15 @@
+#popover {
+	position: absolute;
+	background-color: white;
+	width: 300px;
+	height: 100px;
+	pointer-events: none;
+	opacity: 0.8;
+	padding: 10px;
+}
+
+#location {
+	font-size: 20px;
+	margin: 0px;
+
+}
