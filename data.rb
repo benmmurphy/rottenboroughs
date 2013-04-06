@@ -9,7 +9,7 @@ def load_employees
     county = line[0]
     salary = line[1].gsub(",", "").to_i
     delta = line[2].to_f
-    result[county] = {:salary => salary, :delta => delta}
+    result[county] = {:salary => salary, :change => delta}
   end
   result
 end
@@ -26,11 +26,17 @@ def lerp(color_start, color_end, min, max, value)
 end
 
 counties = File.read("counties.txt").split("\n")
-rich = CSV.parse(File.read("RICH.csv"))
+rich = CSV.parse(File.read("RICH2.csv"))
 
 chief_map = {}
 rich.each do |line|
-  chief_map[line[0]] = line[1].gsub(",", "").to_i
+  council = line[0]
+  salary = line[2].gsub(",", "").to_i
+  change = line[3].gsub("%", "").to_f
+  if salary == 0
+    next
+  end
+  chief_map[line[0]] = {:salary => salary, :change => change}
 end
 
 chief_map["Bedford"] = chief_map["Bedford Borough"]
@@ -47,12 +53,12 @@ employee_data["City of London"] = employee_data["London"]
 
 counties.each do |county|
   salary = chief_map[county]
-  data_json[county] = {:chief_executive_salary => salary}
+  data_json[county] = {:ceo => salary}
   if salary.nil?
     #puts "missing: #{county}"
   else
-    min_salary = [min_salary, salary].min
-    max_salary = [max_salary, salary].max
+    min_salary = [min_salary, salary[:salary]].min
+    max_salary = [max_salary, salary[:salary]].max
   end
 
   edata = employee_data[county]
@@ -71,8 +77,9 @@ end_color = [0x8c, 0xbf, 0x26]
 
 counties.each do |county|
   data = data_json[county]
-  if !data[:chief_executive_salary].nil?
-    color = lerp(end_color, start_color, min_salary, max_salary, data[:chief_executive_salary])
+  if !data[:ceo].nil?
+    salary = data[:ceo][:salary]
+    color = lerp(end_color, start_color, min_salary, max_salary, salary)
     hexc = color.map{|x| x.to_i.to_s(16).rjust(2, "0")}.join
     data[:color] = "##{hexc}"
   end

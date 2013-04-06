@@ -32,8 +32,20 @@
             popover.css("top", e.pageY);
             $("#location").text(this.id);
             var data = window.council_data[this.id];
-            $("#ceo_salary_text").text(format( "#,##0.", data.chief_executive_salary));
+            var ceo = data["ceo"];
+
+            $("#ceo_salary_text").text(format( "#,##0.", ceo.salary));
+            $("#ceo_delta_text").text(format( "#,##0.00", ceo.change));
             popover.css("display", "block");
+
+            var worker = data["employee"];
+            if (worker == null) {
+              $("#worker_box").css("display", "none");
+            } else {
+              $("#worker_box").css("display", "inline-block");
+              $("#worker_salary_text").text(format( "#,##0.", worker.salary));
+              $("#worker_delta_text").text(format( "#,##0.00", worker.change));              
+            }
 
           }
         });
